@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev sec7/capitalizeFirst.ts"
+    "start": "ts-node-dev sec10-search/linear.ts"
   },
   "keywords": [],
   "author": "",
