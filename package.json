@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev sorting/bubbleSort.ts"
+    "start": "ts-node-dev sorting/selectionSort.ts"
   },
   "license": "ISC",
   "devDependencies": {
