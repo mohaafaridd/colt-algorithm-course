@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev sorting/quickSort.ts",
+    "start": "ts-node-dev sorting/radixSort.ts",
     "tsc": ""
   },
   "license": "ISC",
