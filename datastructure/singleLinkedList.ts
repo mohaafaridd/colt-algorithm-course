@@ -74,6 +74,25 @@ export class SingleLinkedList<T> {
     this._length++
     return this
   }
+
+  public get = (index: number) => {
+    if (index >= this._length || index < 0) return null
+    let counter = 0
+    let current = this._head
+    while (counter < index) {
+      current = current.next
+      counter++
+    }
+
+    return current
+  }
+
+  public set = (index: number, value: T) => {
+    const node = this.get(index)
+    if (!node) return false
+    node.value = value
+    return true
+  }
 }
 
 const list = new SingleLinkedList<number>()
@@ -82,7 +101,17 @@ list.push(1)
 list.push(2)
 list.shift()
 list.unshift(7)
+
+console.log(list.get(0))
+console.log(list.set(0, 8))
+console.log(list.get(0))
+
+// console.log(list.get(-1)?.value)
+// console.log(list.get(0)?.value)
+// console.log(list.get(1)?.value)
+// console.log(list.get(2)?.value)
+
 // console.log(list.shift())
-console.log('list', list)
+// console.log('list', list)
 // console.log(list.pop())
 // console.log(list.pop())
