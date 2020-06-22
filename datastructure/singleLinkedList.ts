@@ -124,14 +124,46 @@ export class SingleLinkedList<T> {
     this._length--
     return current.value
   }
+
+  public list = () => {
+    let current = this._head
+    const arr = []
+    while (current) {
+      arr.push(current.value)
+      current = current.next
+    }
+
+    console.log('arr', arr)
+  }
+
+  public reverse = () => {
+    let node = this._head
+    this._head = this._tail
+    this._tail = node
+
+    let prev = null
+    let next = null
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next
+      node.next = prev
+      prev = node
+      node = next
+    }
+
+    return this
+  }
 }
 
 const list = new SingleLinkedList<number>()
 
 list.push(1)
 list.push(2)
-list.unshift(7)
-console.log(list.insert(1, 5))
-console.log(list)
-console.log(list.remove(1))
-console.log(list)
+list.push(3)
+list.push(8)
+
+list.list()
+
+list.reverse()
+
+list.list()
