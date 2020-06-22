@@ -93,25 +93,45 @@ export class SingleLinkedList<T> {
     node.value = value
     return true
   }
+
+  public insert = (index: number, value: T) => {
+    if (index === 0) return !!this.unshift(value)
+    else if (index === this.length) return !!this.push(value)
+
+    const pre = this.get(index - 1)
+    if (!pre) return false
+
+    const node = new Node(value)
+
+    const tempoNext = pre.next
+    node.next = tempoNext
+    pre.next = node
+    this._length++
+    return true
+  }
+
+  public remove = (index: number) => {
+    if (index === 0) return !!this.shift()
+    else if (index === this.length - 1) return !!this.pop()
+
+    const current = this.get(index)
+    if (!current) return false
+
+    const pre = this.get(index - 1)
+    if (!pre) return false
+
+    pre.next = current.next
+    this._length--
+    return current.value
+  }
 }
 
 const list = new SingleLinkedList<number>()
 
 list.push(1)
 list.push(2)
-list.shift()
 list.unshift(7)
-
-console.log(list.get(0))
-console.log(list.set(0, 8))
-console.log(list.get(0))
-
-// console.log(list.get(-1)?.value)
-// console.log(list.get(0)?.value)
-// console.log(list.get(1)?.value)
-// console.log(list.get(2)?.value)
-
-// console.log(list.shift())
-// console.log('list', list)
-// console.log(list.pop())
-// console.log(list.pop())
+console.log(list.insert(1, 5))
+console.log(list)
+console.log(list.remove(1))
+console.log(list)
