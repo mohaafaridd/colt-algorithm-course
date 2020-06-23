@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev datastructure/singleLinkedList.ts"
+    "start": "ts-node-dev datastructure/doublyLinkedList.ts"
   },
   "license": "ISC",
   "devDependencies": {
