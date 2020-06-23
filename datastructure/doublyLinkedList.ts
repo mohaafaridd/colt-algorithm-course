@@ -80,6 +80,32 @@ export class DoublyLinkedLis<T> {
     this._length++
     return this
   }
+
+  public get(index: number) {
+    if (index < 0 || index >= this.length) return null
+    if (index <= this.length / 2) {
+      console.log('from left')
+      let node = this._head
+      for (let i = 0; i < index; i++) {
+        node = node.next
+      }
+      return node
+    } else {
+      console.log('from right')
+      let node = this._tail
+      for (let i = this.length - 1; i > index; i--) {
+        node = node.prev
+      }
+      return node
+    }
+  }
+
+  public set(index: number, value: T) {
+    const node = this.get(index)
+    if (!node) return false
+    node.value = value
+    return true
+  }
 }
 
 const list = new DoublyLinkedLis<number>()
@@ -87,6 +113,8 @@ const list = new DoublyLinkedLis<number>()
 list.push(1)
 list.push(2)
 list.push(3)
-list.shift()
-list.unshift(5)
-console.log(list)
+list.push(4)
+list.push(5)
+console.log(list.get(3).value)
+console.log(list.set(3, 500))
+console.log(list.get(3).value)
