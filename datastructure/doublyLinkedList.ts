@@ -4,7 +4,7 @@ export class Node<T> {
   constructor(public value: T) {}
 }
 
-export class DoublyLinkedLis<T> {
+export class DoublyLinkedList<T> {
   private _length = 0
   private _head: Node<T> = null
   private _tail: Node<T> = null
@@ -106,15 +106,60 @@ export class DoublyLinkedLis<T> {
     node.value = value
     return true
   }
+
+  public insert(index: number, value: T) {
+    if (index === 0) return !!this.unshift(value)
+    else if (index === this.length) return !!this.push(value)
+    else {
+      const oldNode = this.get(index)
+      if (!oldNode) return false
+
+      const newNode = new Node(value)
+      newNode.prev = oldNode.prev
+      newNode.next = oldNode
+
+      oldNode.prev.next = newNode
+      oldNode.prev = newNode
+    }
+
+    this._length++
+    return true
+  }
+
+  public remove(index: number) {
+    if (index === 0) return this.shift()
+    else if (index === this.length - 1) return this.pop()
+
+    const node = this.get(index)
+    if (!node) return undefined
+
+    node.next.prev = node.prev
+    node.prev.next = node.next
+
+    node.prev = null
+    node.next = null
+
+    this._length--
+
+    return node
+  }
+
+  public print() {
+    let current = this._head
+    for (let index = 0; index < this.length; index++) {
+      console.log(current.value)
+      current = current.next
+    }
+  }
 }
 
-const list = new DoublyLinkedLis<number>()
+const list = new DoublyLinkedList<number>()
 
 list.push(1)
 list.push(2)
 list.push(3)
 list.push(4)
 list.push(5)
-console.log(list.get(3).value)
-console.log(list.set(3, 500))
-console.log(list.get(3).value)
+
+list.remove(7)
+console.log(list.print())
