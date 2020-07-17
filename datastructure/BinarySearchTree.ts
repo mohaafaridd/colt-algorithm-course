@@ -67,6 +67,19 @@ class BinarySearchTree {
 
     return result
   }
+
+  public dfsPreOrder() {
+    const result: number[] = []
+
+    const traverse = (node: Node<number>) => {
+      result.push(node.value)
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
+    }
+
+    traverse(this._root)
+    return result
+  }
 }
 
 const tree = new BinarySearchTree()
@@ -83,4 +96,4 @@ tree.insert(60)
 tree.insert(80)
 tree.insert(90)
 
-console.log(tree.bfs())
+console.log(tree.dfsPreOrder())
