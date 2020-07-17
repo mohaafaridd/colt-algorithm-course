@@ -41,16 +41,16 @@ class BinarySearchTree {
 
     let current = this._root
 
-    while (true) {
+    while (current) {
       if (current.value === value) return true
       else if (current.value > value) {
-        if (!current.left) return false
         current = current.left
       } else {
-        if (!current.right) return false
         current = current.right
       }
     }
+
+    return false
   }
 }
 
@@ -68,4 +68,4 @@ tree.insert(60)
 tree.insert(80)
 tree.insert(90)
 
-console.log('tree.find(50)', tree.find(100))
+console.log('tree.find(10)', tree.find(10))
