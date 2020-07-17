@@ -35,13 +35,37 @@ class BinarySearchTree {
       }
     }
   }
+
+  public find(value: number): boolean {
+    if (!this._root) return false
+
+    let current = this._root
+
+    while (true) {
+      if (current.value === value) return true
+      else if (current.value > value) {
+        if (!current.left) return false
+        current = current.left
+      } else {
+        if (!current.right) return false
+        current = current.right
+      }
+    }
+  }
 }
 
 const tree = new BinarySearchTree()
 
-console.log(tree.insert(50))
-console.log(tree.insert(40))
-console.log(tree.insert(30))
-console.log(tree.insert(60))
-console.log(tree.insert(69))
-console.log(tree.insert(60))
+tree.insert(50)
+
+tree.insert(30)
+tree.insert(20)
+tree.insert(40)
+tree.insert(10)
+
+tree.insert(70)
+tree.insert(60)
+tree.insert(80)
+tree.insert(90)
+
+console.log('tree.find(50)', tree.find(100))
