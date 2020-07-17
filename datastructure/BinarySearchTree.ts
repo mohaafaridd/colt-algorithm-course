@@ -52,6 +52,21 @@ class BinarySearchTree {
 
     return false
   }
+
+  public bfs() {
+    if (!this._root) return []
+    const queue = [this._root]
+    const result = []
+
+    while (queue.length > 0) {
+      const node = queue.shift()
+      result.push(node.value)
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
+    }
+
+    return result
+  }
 }
 
 const tree = new BinarySearchTree()
@@ -68,4 +83,4 @@ tree.insert(60)
 tree.insert(80)
 tree.insert(90)
 
-console.log('tree.find(10)', tree.find(10))
+console.log(tree.bfs())
