@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev datastructure/BinarySearchTree.ts"
+    "start": "ts-node-dev datastructure/PriorityQueue.ts"
   },
   "license": "ISC",
   "devDependencies": {
