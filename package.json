@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev datastructure/PriorityQueue.ts"
+    "start": "ts-node-dev datastructure/HashTable.ts"
   },
   "license": "ISC",
   "devDependencies": {
