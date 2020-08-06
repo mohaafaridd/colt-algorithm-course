@@ -1,7 +1,7 @@
 {
   "name": "colt",
   "scripts": {
-    "start": "ts-node-dev datastructure/WeightedGraph.ts"
+    "start": "ts-node-dev dynamicProgramming/fibo.ts"
   },
   "license": "ISC",
   "devDependencies": {
