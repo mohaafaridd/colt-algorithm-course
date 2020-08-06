@@ -5,7 +5,7 @@ class Node {
   priority: number
 }
 
-class PriorityQueue {
+export class PriorityQueue {
   private _values: Node[] = []
 
   public get values(): Node[] {
@@ -45,7 +45,7 @@ class PriorityQueue {
     return root
   }
 
-  public sinkDown() {
+  private sinkDown() {
     const e = this._values[0]
     const length = this.length
 
@@ -80,14 +80,3 @@ class PriorityQueue {
     }
   }
 }
-
-const heap = new PriorityQueue()
-
-console.log(heap.enqueue({ value: 'headache', priority: 5 }))
-console.log(heap.enqueue({ value: 'broken leg', priority: 1 }))
-console.log(heap.enqueue({ value: 'finger cut', priority: 3 }))
-console.log(heap.enqueue({ value: 'heart disease', priority: 0 }))
-
-console.log(heap.dequeue())
-console.log(heap.dequeue())
-console.log(heap.values)
